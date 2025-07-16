@@ -16,6 +16,7 @@ namespace Reflex.Injectors
     public static class UnityInjector
     {
         public static Action<Scene, SceneScope> OnSceneLoaded;
+        public static event Action OnProjectContainerConfigured;
         internal static Dictionary<Scene, Container> ContainersPerScene { get; } = new();
         internal static Stack<Container> ContainerParentOverride { get; } = new();
         internal static Action<ContainerBuilder> ExtraInstallers;
@@ -59,6 +60,7 @@ namespace Reflex.Injectors
             OnSceneLoaded += InjectScene;
             SceneManager.sceneUnloaded += DisposeScene;
             Application.quitting += DisposeProject;
+            OnProjectContainerConfigured?.Invoke();
         }
 
         private static Container CreateProjectContainer()
