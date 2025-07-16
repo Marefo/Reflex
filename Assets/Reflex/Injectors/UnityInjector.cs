@@ -25,6 +25,7 @@ namespace Reflex.Injectors
         {
             ReportReflexDebuggerStatus();
             ResetStaticState();
+            OnSceneLoaded += InjectScene;
             Container.ProjectContainer = CreateProjectContainer();
 
             void InjectScene(Scene scene, SceneScope sceneScope)
@@ -56,7 +57,6 @@ namespace Reflex.Injectors
                 Application.quitting -= DisposeProject;
             }
             
-            OnSceneLoaded += InjectScene;
             SceneManager.sceneUnloaded += DisposeScene;
             Application.quitting += DisposeProject;
         }
