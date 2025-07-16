@@ -13,7 +13,7 @@ using UnityEngine.Scripting;
 
 namespace Reflex.Injectors
 {
-    static class UnityInjector
+    public static class UnityInjector
     {
         public static Action<Scene, SceneScope> OnSceneLoaded;
         internal static Dictionary<Scene, Container> ContainersPerScene { get; } = new();
