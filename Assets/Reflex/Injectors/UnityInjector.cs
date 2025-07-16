@@ -13,9 +13,9 @@ using UnityEngine.Scripting;
 
 namespace Reflex.Injectors
 {
-    internal static class UnityInjector
+    static class UnityInjector
     {
-        internal static Action<Scene, SceneScope> OnSceneLoaded;
+        public static Action<Scene, SceneScope> OnSceneLoaded;
         internal static Dictionary<Scene, Container> ContainersPerScene { get; } = new();
         internal static Stack<Container> ContainerParentOverride { get; } = new();
         internal static Action<ContainerBuilder> ExtraInstallers;
